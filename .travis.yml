@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+    - docker
+    
+before_install:
+    - docker build -t rdsn/docker-react -f Dockerfile.dev .
+    
+script:
+    - docker run -e CI=true rdsn/docker-react npm run test
